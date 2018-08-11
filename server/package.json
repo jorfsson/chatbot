@@ -1,0 +1,30 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon src/app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cheerio": "^1.0.0-rc.2",
+    "cors": "^2.8.4",
+    "express": "^4.16.3",
+    "markovchain": "^1.0.2",
+    "morgan": "^1.9.0",
+    "natural": "^0.6.1",
+    "nodemon": "^1.18.3",
+    "parse-json": "^4.0.0",
+    "puppeteer": "^1.6.2",
+    "query-string": "^6.1.0",
+    "querystring": "^0.2.0",
+    "request": "^2.87.0",
+    "request-promise": "^4.2.2",
+    "unescape-js": "^1.1.0"
+  }
+}
