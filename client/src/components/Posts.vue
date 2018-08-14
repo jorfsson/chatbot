@@ -6,14 +6,8 @@
       <button v-on:click="getPosts(question)">Click it</button>
     </div>
       <span>{{ question }}</span>
-    <div v-for="(post, index) in posts" :key="`post-${index}`">
-      <p>
-
-        <span><b>{{ post.title }}</b></span><br />
-        <span>{{ post.description }}</span>
-
-      </p>
-    </div>
+      <br />
+      <span>{{ answer }}</span>
   </div>
 </template>z
 
@@ -24,14 +18,14 @@ export default {
   name: 'posts',
   data () {
     return {
-      posts: [],
+      answer: '',
       question: ''
     }
   },
   methods: {
     async getPosts (msg) {
       const response = await fetchPosts(msg)
-      this.posts = response.data
+      this.answer = response.data
     }
   }
 }
