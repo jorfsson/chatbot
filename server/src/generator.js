@@ -95,7 +95,6 @@ const triGramGen = (length) => {
   return result.join(' ')
 }
 
-module.exports.pride = triFreq
 module.exports.wordGen = wordGen
 module.exports.sentenceGen = sentenceGen
 module.exports.triGramGen = triGramGen

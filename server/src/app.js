@@ -8,7 +8,7 @@ const mc = require('markovchain')
 const une = require('unescape-js')
 const Filter = require('bad-words')
 const { responder } = require('./helpers')
-const { pride, wordGen, sentenceGen, triGramGen } = require('./generator')
+const { wordGen, sentenceGen, triGramGen } = require('./generator')
 
 const app = express()
 
