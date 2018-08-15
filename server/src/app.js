@@ -8,7 +8,7 @@ const mc = require('markovchain')
 const une = require('unescape-js')
 const Filter = require('bad-words')
 const { responder } = require('./helpers')
-const { wordGen, sentenceGen, triGramGen } = require('./generator')
+const { wordGen, sentenceGen, triGramGen, longestWord } = require('./generator')
 
 const app = express()
 
@@ -21,6 +21,10 @@ app.get('/posts', (req, res) => {
       title: "hello World!",
       description: "Hi there! how are you!?"
     }])
+})
+
+app.get('/markov', (req, res) => {
+  res.send(sentenceGen(10))
 })
 
 app.post('/posts', (req, res) => {

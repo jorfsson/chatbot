@@ -8,24 +8,47 @@
       <span>{{ question }}</span>
       <br />
       <span>{{ answer }}</span>
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <span>{{ markov }}</span>
   </div>
-</template>z
+</template>
 
 <script>
-import { fetchPosts } from '@/services/PostsService'
+import { fetchPosts, fetchMarkov } from '@/services/PostsService'
 
 export default {
   name: 'posts',
   data () {
     return {
       answer: '',
-      question: ''
+      question: '',
+      markov: ''
     }
+  },
+  mounted () {
+    this.getMarkov()
   },
   methods: {
     async getPosts (msg) {
       const response = await fetchPosts(msg)
       this.answer = response.data
+    },
+    async getMarkov() {
+      const markov = await fetchMarkov()
+      this.markov = markov.data
     }
   }
 }

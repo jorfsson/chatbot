@@ -1,5 +1,6 @@
 const request = require('request-promise')
 const Filter = require('bad-words')
+const fs = require('fs')
 const clean = new Filter();
 
 const responder = (query) => request.get(`https://api.pushshift.io/reddit/comment/search/?q=${query}&html_decode`)
@@ -23,5 +24,6 @@ const responder = (query) => request.get(`https://api.pushshift.io/reddit/commen
     .map((string)=>string.split('\n').join(' ')
       .split('  ').join(' ')
       .split('  ').join(' ')))
+
 
 module.exports.responder = responder

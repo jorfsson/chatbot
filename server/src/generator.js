@@ -9,7 +9,9 @@ const tri = NGrams.trigrams(Pride)
 const bi = NGrams.bigrams(Pride)
 const tokenizer = new natural.WordPunctTokenizer()
 
-const tokens = tokenizer.tokenize(Pride)
+pride = Pride.replace(/[^\u0000-\u007F]+/gi, '');
+
+const tokens = tokenizer.tokenize(pride)
 
 const wordGen = () =>
   tokens[Math.floor(Math.random() * (tokens.length - 1)) + 1]
@@ -43,7 +45,7 @@ const sentenceGen = (length) => {
       findStarter = () => {
         let temp = wordGen();
         console.log(biFreq[temp])
-        return biFreq[temp] ? (biFreq[temp].length > 0 ? temp : findStarter()) : findStater()
+        return biFreq[temp] ? (biFreq[temp].length > 0 ? temp : findStarter()) : findStarter()
       }
       starter = findStarter();
 
@@ -95,6 +97,14 @@ const triGramGen = (length) => {
   return result.join(' ')
 }
 
+const findLongestWord = (tokens) => {
+  tokens.sort((a, b)=> b.length - a.length)
+  return [tokens[0], tokens[0].length]
+}
+
+const longestWord = findLongestWord(tokens)
+
 module.exports.wordGen = wordGen
 module.exports.sentenceGen = sentenceGen
 module.exports.triGramGen = triGramGen
+module.exports.longestWord = longestWord
