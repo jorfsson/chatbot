@@ -16,10 +16,8 @@ app.use(morgan('combined'))
 app.use(bodyParser.json())
 app.use(cors())
 
-app.get('/posts', (req, res) => {
-    res.send([{
-      title: "hello World!",
-      description: "Hi there! how are you!?"
+app.get('/sentenceGen', (req, res) => {
+    res.send([{sentence: sentenceGen(8)
     }])
 })
 
@@ -35,4 +33,4 @@ app.post('/posts', (req, res) => {
   })
 })
 
-app.listen(process.env.PORT || 8081)
+app.listen(process.env.PORT || 8081, '0.0.0.0')

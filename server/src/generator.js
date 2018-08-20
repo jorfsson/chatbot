@@ -3,13 +3,13 @@ const fs = require('fs')
 const Analyzer = natural.SentimentAnalyzer
 const stemmer = natural.PorterStemmer
 const analyzer = new Analyzer('English', stemmer, 'afinn')
-const Pride = fs.readFileSync('./pride.txt', 'utf8')
+const Pride = fs.readFileSync('./data/pride.txt', 'utf8')
 const NGrams = natural.NGrams
 const tri = NGrams.trigrams(Pride)
 const bi = NGrams.bigrams(Pride)
 const tokenizer = new natural.WordPunctTokenizer()
 
-pride = Pride.replace(/[^\u0000-\u007F]+/gi, '');
+const pride = Pride.replace(/[^\u0000-\u007F]+/gi, '');
 
 const tokens = tokenizer.tokenize(pride)
 
@@ -92,6 +92,12 @@ const triGramGen = (length) => {
       starter = pickedTriplet[2];
       result.push(pickedTriplet[1], pickedTriplet[2])
       length--
+    }
+  }
+  for (var i = 0; i < result.length; i++) {
+    if (result[i] === 't' || result[i] === 's' || result[i] === 'll') {
+      result[i - 1] = result[i - 1] + "'" + result[i];
+      result.splice(i)
     }
   }
   return result.join(' ')
