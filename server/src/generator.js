@@ -3,7 +3,7 @@ const fs = require('fs')
 const Analyzer = natural.SentimentAnalyzer
 const stemmer = natural.PorterStemmer
 const analyzer = new Analyzer('English', stemmer, 'afinn')
-const Pride = fs.readFileSync('./data/pride.txt', 'utf8')
+const Pride = fs.readFileSync('./src/data/pride.txt', 'utf8')
 const NGrams = natural.NGrams
 const tri = NGrams.trigrams(Pride)
 const bi = NGrams.bigrams(Pride)
@@ -110,7 +110,10 @@ const findLongestWord = (tokens) => {
 
 const longestWord = findLongestWord(tokens)
 
+
+
 module.exports.wordGen = wordGen
 module.exports.sentenceGen = sentenceGen
 module.exports.triGramGen = triGramGen
 module.exports.longestWord = longestWord
+module.exports.triFreq = triFreq
